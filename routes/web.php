@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,10 @@ Route::get('/world', function () {
     return view('hello.world', [
         'name' => 'Felix'
     ]);
+});
+
+Route::get('/html-encoding', function (Request $request) {
+    return view('html-encoding', ['name' => $request->input('name')]);
+    // karena GET, maka input nya dari query parameter
+    // kalo path param, tinggal tambahin param di function closure
 });
