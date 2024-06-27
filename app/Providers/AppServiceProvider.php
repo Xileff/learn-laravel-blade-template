@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\HelloService;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('hello', function ($expression) {
+            return "<?php echo 'Hello ' . $expression; ?>";
+        });
     }
 }
